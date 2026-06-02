@@ -33,11 +33,11 @@ _The commands users and AI agents will run daily. Depends on Tier 2._
 | [#6](https://github.com/ZhannaM85/zm-index/issues/6) | feat: `zm-index rebuild` — full index build command | Scan → parse → store; print summary (files, symbols, time) |
 | [#7](https://github.com/ZhannaM85/zm-index/issues/7) | feat: incremental index updates based on file mtime | Skip unchanged files; remove deleted files; speeds up repeated runs |
 | [#8](https://github.com/ZhannaM85/zm-index/issues/8) | feat: `zm-index search <symbol>` — find any symbol by name | FTS5 query, partial/prefix match, show kind + file + line |
-| TBD | feat: `zm-index outline <file>` — list all symbols in a file | Returns all symbols defined in the given file, sorted by line number |
-| TBD | feat: `zm-index usages <symbol>` — find all references to a symbol | Text search across indexed files for the symbol name |
-| TBD | feat: `zm-index callers <function>` — find call sites of a function | Find places where a function is called, not just defined |
-| TBD | feat: `zm-index stats` — show index statistics | File count, symbol count, DB size, last updated time |
-| TBD | feat: `zm-index db-path` — print the index database location | Lets users inspect or delete the DB manually |
+| [#9](https://github.com/ZhannaM85/zm-index/issues/9) | feat: `zm-index outline <file>` — list all symbols in a file | Returns all symbols defined in the given file, sorted by line number |
+| [#10](https://github.com/ZhannaM85/zm-index/issues/10) | feat: `zm-index usages <symbol>` — find all references to a symbol | Text search across indexed files for the symbol name |
+| [#11](https://github.com/ZhannaM85/zm-index/issues/11) | feat: `zm-index callers <function>` — find call sites of a function | Find places where a function is called, not just defined |
+| [#12](https://github.com/ZhannaM85/zm-index/issues/12) | feat: `zm-index stats` — show index statistics | File count, symbol count, DB size, last updated time |
+| [#13](https://github.com/ZhannaM85/zm-index/issues/13) | feat: `zm-index db-path` — print the index database location | Lets users inspect or delete the DB manually |
 
 ---
 
@@ -46,8 +46,8 @@ _Make zm-index easy to adopt in Claude Code projects._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| TBD | feat: `zm-index init` — generate a CLAUDE.md snippet for the project | Prints ready-to-paste rules telling Claude to use zm-index for code search |
-| TBD | feat: document SessionStart hook for auto-rebuild in `.claude/settings.json` | Guide for setting up `ast-index stats || zm-index rebuild` on session start |
+| [#14](https://github.com/ZhannaM85/zm-index/issues/14) | feat: `zm-index init` — generate a CLAUDE.md snippet for the project | Prints ready-to-paste rules telling Claude to use zm-index for code search |
+| [#15](https://github.com/ZhannaM85/zm-index/issues/15) | docs: SessionStart hook for auto-rebuild in `.claude/settings.json` | Guide for setting up `zm-index stats || zm-index rebuild` on session start |
 
 ---
 
@@ -56,10 +56,10 @@ _Broaden parser coverage beyond TypeScript/JavaScript._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| TBD | feat: Python support via tree-sitter-python | Extract classes, functions, methods from `.py` files |
-| TBD | feat: Go support via tree-sitter-go | Extract structs, interfaces, functions from `.go` files |
-| TBD | feat: Rust support via tree-sitter-rust | Extract structs, enums, functions, traits from `.rs` files |
-| TBD | feat: C# support via tree-sitter-c-sharp | Extract classes, methods, interfaces from `.cs` files |
+| [#16](https://github.com/ZhannaM85/zm-index/issues/16) | feat: Python support via tree-sitter-python | Extract classes, functions, methods from `.py` files |
+| [#17](https://github.com/ZhannaM85/zm-index/issues/17) | feat: Go support via tree-sitter-go | Extract structs, interfaces, functions from `.go` files |
+| [#18](https://github.com/ZhannaM85/zm-index/issues/18) | feat: Rust support via tree-sitter-rust | Extract structs, enums, functions, traits from `.rs` files |
+| [#19](https://github.com/ZhannaM85/zm-index/issues/19) | feat: C# support via tree-sitter-c-sharp | Extract classes, methods, interfaces from `.cs` files |
 
 ---
 
@@ -68,6 +68,6 @@ _Packaging and publishing. Do last — the tool should be stable first._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| TBD | docs: write README with install, usage, and CLAUDE.md integration guide | Cover `npm install -g zm-index`, all commands, and AI agent setup |
-| TBD | feat: GitHub Actions CI workflow | Run tests on push and PR |
-| TBD | feat: prepare and publish package to npm | Pre-publish checklist, versioning, first release |
+| [#20](https://github.com/ZhannaM85/zm-index/issues/20) | docs: write README with install, usage, and CLAUDE.md integration guide | Cover `npm install -g zm-index`, all commands, and AI agent setup |
+| [#21](https://github.com/ZhannaM85/zm-index/issues/21) | feat: GitHub Actions CI workflow | Run tests on push and PR |
+| [#22](https://github.com/ZhannaM85/zm-index/issues/22) | feat: prepare and publish package to npm | Pre-publish checklist, versioning, first release |
