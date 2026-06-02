@@ -12,5 +12,8 @@
   "type": "module",
   "bin": {
     "zm-index": "src/cli.js"
+  },
+  "dependencies": {
+    "commander": "^15.0.0"
   }
 }
