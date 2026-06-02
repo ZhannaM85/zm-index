@@ -147,6 +147,21 @@ This writes `.cursor/rules/zm-index.mdc` with instructions telling Cursor's AI t
 
 ---
 
+## Why it's faster than grep
+
+When Claude Code searches for a symbol without zm-index, it uses `grep` — which reads every single file in your project from top to bottom every time.
+
+| | How it searches | Complexity |
+|---|---|---|
+| **grep** | Scans all characters in all files on every search | O(F × C) — proportional to the number of files × characters per file |
+| **zm-index** | Looks up a pre-built index, like a book's index page | O(log S) — proportional to the log of the number of symbols |
+
+In plain terms: if your project has 500 files with 300 lines each, grep reads **150,000 lines** on every search. zm-index does a single index lookup regardless of project size — the result comes back in milliseconds whether your project has 100 files or 10,000.
+
+The trade-off: you pay a one-time cost upfront when you run `zm-index rebuild` to build the index (O(F × C), same as grep). Every search after that is fast.
+
+---
+
 ## Privacy & security
 
 - The index database is stored in your OS cache directory (`%LOCALAPPDATA%\zm-index\` on Windows, `~/.cache/zm-index/` on Linux/Mac) — outside your project, never committed to git
