@@ -41,6 +41,10 @@ zm-index search User    # find symbols matching "User"
 
 ---
 
+## AI editor integration
+
+zm-index works with any AI coding assistant that can run shell commands. Claude Code and Cursor are supported out of the box.
+
 ## Claude Code integration
 
 ### 1. Build the index
@@ -82,6 +86,24 @@ Add to `.claude/settings.json` in your project:
 ```
 
 > On Linux/Mac use `>/dev/null` instead of `>nul`.
+
+---
+
+## Cursor integration
+
+### 1. Build the index
+
+```sh
+zm-index rebuild
+```
+
+### 2. Generate the rules file
+
+```sh
+zm-index init --cursor
+```
+
+This writes `.cursor/rules/zm-index.mdc` with instructions telling Cursor's AI to use zm-index for all code searches. Run once per project.
 
 ---
 
