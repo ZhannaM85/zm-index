@@ -1,0 +1,16 @@
+{
+  "name": "zm-index",
+  "version": "1.0.0",
+  "description": "Fast local code symbol index for AI coding assistants. CLI tool for TypeScript/JavaScript projects.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "Zhanna Myshkovskaya",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "zm-index": "src/cli.js"
+  }
+}
