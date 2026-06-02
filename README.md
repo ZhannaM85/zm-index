@@ -123,7 +123,7 @@ This writes `.cursor/rules/zm-index.mdc` with instructions telling Cursor's AI t
 ## How it works
 
 1. **Scan** — walks the project directory, respects `.gitignore`, collects source files with `mtime` and `size`
-2. **Parse** — uses [tree-sitter](https://tree-sitter.github.io/) to parse each file into an AST
+2. **Parse** — uses [tree-sitter](https://tree-sitter.github.io/) to parse each file into an AST (Abstract Syntax Tree — a structured representation of code where each function, class, and variable becomes a named node in a tree)
 3. **Extract** — walks the AST and pulls out named symbols with their kind and line number
 4. **Store** — writes everything to a local SQLite database with an FTS5 full-text index for fast queries
 5. **Incremental** — on subsequent rebuilds, only changed files are re-parsed
