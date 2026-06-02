@@ -8,6 +8,23 @@ zm-index scans your codebase, extracts symbols (classes, functions, interfaces, 
 
 ---
 
+## What is a symbol?
+
+In zm-index, a **symbol** is any named thing you define in your code — not a letter or a special character. For example:
+
+| What you write | Symbol name | Kind |
+|----------------|-------------|------|
+| `class UserService` | `UserService` | class |
+| `function fetchData()` | `fetchData` | function |
+| `interface ApiResponse` | `ApiResponse` | interface |
+| `const MAX_RETRIES = 3` | `MAX_RETRIES` | const |
+| `type UserId = string` | `UserId` | type |
+| `enum Direction` | `Direction` | enum |
+
+When you run `zm-index search UserService`, you're asking: _"where in this codebase is something called UserService defined?"_ — and zm-index tells you the exact file and line number.
+
+---
+
 ## Installation
 
 ```sh
