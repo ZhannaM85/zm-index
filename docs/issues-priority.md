@@ -66,8 +66,18 @@ _Broaden parser coverage beyond TypeScript/JavaScript._
 
 ---
 
-## Tier 6 — Distribution
-_Packaging and publishing. Do last — the tool should be stable first._
+## Tier 6 — Testing & Benchmarks
+_Verify correctness and measure performance before publishing._
+
+| # | Issue | Notes |
+|---|-------|-------|
+| [#26](https://github.com/ZhannaM85/zm-index/issues/26) | feat: unit and integration test suite | Fixture-based tests for symbol extraction and all CLI commands; uses `node --test` |
+| [#27](https://github.com/ZhannaM85/zm-index/issues/27) | feat: performance benchmarks for rebuild and search | hyperfine macro benchmarks + per-stage timing; compare search speed against grep |
+
+---
+
+## Tier 7 — Distribution
+_Packaging and publishing. Do last — the tool should be stable and tested first._
 
 | # | Issue | Notes |
 |---|-------|-------|
