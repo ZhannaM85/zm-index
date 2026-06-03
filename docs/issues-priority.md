@@ -23,7 +23,7 @@ _Parse source files into symbols. Depends on Tier 1._
 | # | Issue | Notes |
 |---|-------|-------|
 | ~~[#4](https://github.com/ZhannaM85/zm-index/issues/4)~~ | ~~feat: tree-sitter integration for TypeScript and JavaScript~~ | ~~Install `tree-sitter`, `tree-sitter-typescript`, `tree-sitter-javascript`; expose `parse(filePath, source)`~~ |
-| [#5](https://github.com/ZhannaM85/zm-index/issues/5) | feat: symbol extraction — functions, classes, interfaces, types, methods | Walk AST, extract `{ name, kind, file, line }` for all named symbols |
+| ~~[#5](https://github.com/ZhannaM85/zm-index/issues/5)~~ | ~~feat: symbol extraction — functions, classes, interfaces, types, methods~~ | ~~Walk AST, extract `{ name, kind, file, line }` for all named symbols~~ |
 
 ---
 
