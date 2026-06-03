@@ -5,6 +5,7 @@ import { ensureGitignore } from './gitignore.js';
 import { rebuild } from './rebuild.js';
 import { search } from './search.js';
 import { outline } from './outline.js';
+import { usages } from './usages.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -35,7 +36,7 @@ program
 program
   .command('usages <symbol>')
   .description('Find all references to a symbol')
-  .action(() => { console.log('usages: not yet implemented'); });
+  .action((symbol) => { usages(process.cwd(), symbol); });
 
 program
   .command('callers <function>')
