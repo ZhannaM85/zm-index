@@ -32,7 +32,7 @@ _The commands users and AI agents will run daily. Depends on Tier 2._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| [#6](https://github.com/ZhannaM85/zm-index/issues/6) | feat: `zm-index rebuild` — full index build command | Scan → parse → store; print summary (files, symbols, time) |
+| ~~[#6](https://github.com/ZhannaM85/zm-index/issues/6)~~ | ~~feat: `zm-index rebuild` — full index build command~~ | ~~Scan → parse → store; print summary (files, symbols, time)~~ |
 | [#7](https://github.com/ZhannaM85/zm-index/issues/7) | feat: incremental index updates based on file mtime | Skip unchanged files; remove deleted files; speeds up repeated runs |
 | [#8](https://github.com/ZhannaM85/zm-index/issues/8) | feat: `zm-index search <symbol>` — find any symbol by name | FTS5 query, partial/prefix match, show kind + file + line |
 | [#9](https://github.com/ZhannaM85/zm-index/issues/9) | feat: `zm-index outline <file>` — list all symbols in a file | Returns all symbols defined in the given file, sorted by line number |
