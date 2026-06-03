@@ -4,6 +4,7 @@ import { createRequire } from 'module';
 import { ensureGitignore } from './gitignore.js';
 import { rebuild } from './rebuild.js';
 import { search } from './search.js';
+import { outline } from './outline.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -29,7 +30,7 @@ program
 program
   .command('outline <file>')
   .description('List all symbols defined in a file')
-  .action(() => { console.log('outline: not yet implemented'); });
+  .action((file) => { outline(process.cwd(), file); });
 
 program
   .command('usages <symbol>')
