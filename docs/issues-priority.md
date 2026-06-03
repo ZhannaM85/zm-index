@@ -12,7 +12,7 @@ _Core infrastructure that everything else depends on. Do in order._
 | ~~[#1](https://github.com/ZhannaM85/zm-index/issues/1)~~ | ~~feat: project scaffold — ESM Node.js CLI with commander~~ | ~~Entry point, `--help`, basic command structure~~ |
 | ~~[#2](https://github.com/ZhannaM85/zm-index/issues/2)~~ | ~~feat: SQLite database setup with better-sqlite3~~ | ~~Schema: `files` + `symbols` tables, FTS5 index, `openDb(projectRoot)` helper~~ |
 | ~~[#3](https://github.com/ZhannaM85/zm-index/issues/3)~~ | ~~feat: file scanner — walk project directory and collect source files~~ | ~~Filter by extension, respect `.gitignore`, return `{ path, mtime, size }`~~ |
-| [#23](https://github.com/ZhannaM85/zm-index/issues/23) | feat: auto-add zm-index artifacts to .gitignore in the target project | Prevent index DB files from being accidentally committed in work repos |
+| ~~[#23](https://github.com/ZhannaM85/zm-index/issues/23)~~ | ~~feat: auto-add zm-index artifacts to .gitignore in the target project~~ | ~~Prevent index DB files from being accidentally committed in work repos~~ |
 | [#24](https://github.com/ZhannaM85/zm-index/issues/24) | feat: lock down npm package contents to prevent bundling work project code | Use `"files": ["src/"]` + `.npmignore` to ensure only tool source is published |
 
 ---
