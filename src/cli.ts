@@ -3,6 +3,7 @@ import { program } from 'commander';
 import { createRequire } from 'module';
 import { ensureGitignore } from './gitignore.js';
 import { rebuild } from './rebuild.js';
+import { search } from './search.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -23,7 +24,7 @@ program
 program
   .command('search <symbol>')
   .description('Find any symbol by name')
-  .action(() => { console.log('search: not yet implemented'); });
+  .action((symbol) => { search(process.cwd(), symbol); });
 
 program
   .command('outline <file>')
