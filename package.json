@@ -2,7 +2,7 @@
   "name": "zm-index",
   "version": "1.0.0",
   "description": "Fast local code symbol index for AI coding assistants. CLI tool for TypeScript/JavaScript projects.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "node --test",
     "build": "tsc",
@@ -25,5 +25,9 @@
     "@types/node": "^25.9.1",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
-  }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ]
 }

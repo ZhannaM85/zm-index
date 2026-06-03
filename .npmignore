@@ -1,0 +1,13 @@
+src/
+tests/
+docs/
+benchmarks/
+.claude/
+.cursor/
+.zm-index/
+*.db
+*.db-shm
+*.db-wal
+tsconfig.json
+*.test.ts
+*.test.js
