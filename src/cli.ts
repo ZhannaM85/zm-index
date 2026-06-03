@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { program } from 'commander';
 import { createRequire } from 'module';
+import { ensureGitignore } from './gitignore.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -13,7 +14,10 @@ program
 program
   .command('rebuild')
   .description('Scan the project and build the symbol index from scratch')
-  .action(() => { console.log('rebuild: not yet implemented'); });
+  .action(() => {
+    ensureGitignore(process.cwd());
+    console.log('rebuild: not yet implemented');
+  });
 
 program
   .command('search <symbol>')
