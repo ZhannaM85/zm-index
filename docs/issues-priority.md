@@ -37,7 +37,7 @@ _The commands users and AI agents will run daily. Depends on Tier 2._
 | ~~[#8](https://github.com/ZhannaM85/zm-index/issues/8)~~ | ~~feat: `zm-index search <symbol>` — find any symbol by name~~ | ~~FTS5 query, partial/prefix match, show kind + file + line~~ |
 | ~~[#9](https://github.com/ZhannaM85/zm-index/issues/9)~~ | ~~feat: `zm-index outline <file>` — list all symbols in a file~~ | ~~Returns all symbols defined in the given file, sorted by line number~~ |
 | ~~[#10](https://github.com/ZhannaM85/zm-index/issues/10)~~ | ~~feat: `zm-index usages <symbol>` — find all references to a symbol~~ | ~~Text search across indexed files for the symbol name~~ |
-| [#11](https://github.com/ZhannaM85/zm-index/issues/11) | feat: `zm-index callers <function>` — find call sites of a function | Find places where a function is called, not just defined |
+| ~~[#11](https://github.com/ZhannaM85/zm-index/issues/11)~~ | ~~feat: `zm-index callers <function>` — find call sites of a function~~ | ~~Find places where a function is called, not just defined~~ |
 | [#12](https://github.com/ZhannaM85/zm-index/issues/12) | feat: `zm-index stats` — show index statistics | File count, symbol count, DB size, last updated time |
 | [#13](https://github.com/ZhannaM85/zm-index/issues/13) | feat: `zm-index db-path` — print the index database location | Lets users inspect or delete the DB manually |
 
