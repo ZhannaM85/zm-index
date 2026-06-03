@@ -6,6 +6,7 @@ import { rebuild } from './rebuild.js';
 import { search } from './search.js';
 import { outline } from './outline.js';
 import { usages } from './usages.js';
+import { callers } from './callers.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -41,7 +42,7 @@ program
 program
   .command('callers <function>')
   .description('Find all call sites of a function')
-  .action(() => { console.log('callers: not yet implemented'); });
+  .action((fn) => { callers(process.cwd(), fn); });
 
 program
   .command('stats')
