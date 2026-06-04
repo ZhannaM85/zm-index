@@ -5,3 +5,4 @@ dist/
 *.db-wal
 .zm-index/
 .mouse-fixes/
+*.zm-index.db
