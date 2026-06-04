@@ -14,6 +14,22 @@ const CLAUDE_SNIPPET = `## Code Search
 - \`zm-index stats\`                    # check index health
 `;
 
+const SETTINGS_SNIPPET_WINDOWS = `{
+  "hooks": {
+    "SessionStart": [{
+      "command": "zm-index stats >nul 2>&1 || zm-index rebuild"
+    }]
+  }
+}`;
+
+const SETTINGS_SNIPPET_UNIX = `{
+  "hooks": {
+    "SessionStart": [{
+      "command": "zm-index stats >/dev/null 2>&1 || zm-index rebuild"
+    }]
+  }
+}`;
+
 const CURSOR_MDC_CONTENT = `---
 description: Use zm-index for all code search tasks
 alwaysApply: true
@@ -42,6 +58,25 @@ export function init(projectRoot: string, write: boolean, cursor: boolean): void
   }
 
   console.log(CLAUDE_SNIPPET);
+
+  const isWindows = process.platform === 'win32';
+  console.log(`
+---
+## Auto-rebuild on session start (optional)
+
+Add to \`.claude/settings.json\` in your project:
+
+\`\`\`json
+${isWindows ? SETTINGS_SNIPPET_WINDOWS : SETTINGS_SNIPPET_UNIX}
+\`\`\`
+${isWindows
+    ? '> On Linux/Mac use `>/dev/null` instead of `>nul`.'
+    : '> On Windows use `>nul` instead of `>/dev/null`.'}
+
+To keep \`.claude/settings.json\` out of version control:
+
+  echo ".claude/settings.json" >> .git/info/exclude
+`);
 
   if (!write) return;
 

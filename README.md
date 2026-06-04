@@ -90,8 +90,9 @@ Run `zm-index init` to get a ready-to-paste snippet, or add this manually:
 
 ### 3. Auto-rebuild on session start (optional)
 
-Add to `.claude/settings.json` in your project:
+Add to `.claude/settings.json` in your project to keep the index fresh automatically:
 
+**Windows:**
 ```json
 {
   "hooks": {
@@ -102,7 +103,22 @@ Add to `.claude/settings.json` in your project:
 }
 ```
 
-> On Linux/Mac use `>/dev/null` instead of `>nul`.
+**Linux/Mac:**
+```json
+{
+  "hooks": {
+    "SessionStart": [{
+      "command": "zm-index stats >/dev/null 2>&1 || zm-index rebuild"
+    }]
+  }
+}
+```
+
+This checks whether the index is valid (`zm-index stats`) and rebuilds only if needed. To keep `.claude/settings.json` out of version control, add it to `.git/info/exclude`:
+
+```sh
+echo ".claude/settings.json" >> .git/info/exclude
+```
 
 ---
 
