@@ -7,6 +7,7 @@ import { search } from './search.js';
 import { outline } from './outline.js';
 import { usages } from './usages.js';
 import { callers } from './callers.js';
+import { stats } from './stats.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -47,7 +48,7 @@ program
 program
   .command('stats')
   .description('Show index statistics for the current project')
-  .action(() => { console.log('stats: not yet implemented'); });
+  .action(() => { stats(process.cwd()); });
 
 program
   .command('db-path')
