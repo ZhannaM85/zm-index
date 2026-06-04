@@ -9,7 +9,7 @@ export interface FileEntry {
 }
 
 const SUPPORTED_EXTENSIONS = new Set([
-  '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.vue', '.svelte',
+  '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.vue', '.svelte', '.py',
 ]);
 
 const ALWAYS_SKIP = new Set([
