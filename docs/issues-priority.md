@@ -39,7 +39,7 @@ _The commands users and AI agents will run daily. Depends on Tier 2._
 | ~~[#10](https://github.com/ZhannaM85/zm-index/issues/10)~~ | ~~feat: `zm-index usages <symbol>` — find all references to a symbol~~ | ~~Text search across indexed files for the symbol name~~ |
 | ~~[#11](https://github.com/ZhannaM85/zm-index/issues/11)~~ | ~~feat: `zm-index callers <function>` — find call sites of a function~~ | ~~Find places where a function is called, not just defined~~ |
 | ~~[#12](https://github.com/ZhannaM85/zm-index/issues/12)~~ | ~~feat: `zm-index stats` — show index statistics~~ | ~~File count, symbol count, DB size, last updated time~~ |
-| [#13](https://github.com/ZhannaM85/zm-index/issues/13) | feat: `zm-index db-path` — print the index database location | Lets users inspect or delete the DB manually |
+| ~~[#13](https://github.com/ZhannaM85/zm-index/issues/13)~~ | ~~feat: `zm-index db-path` — print the index database location~~ | ~~Lets users inspect or delete the DB manually~~ |
 
 ---
 
