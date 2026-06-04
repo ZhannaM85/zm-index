@@ -9,6 +9,7 @@ import { usages } from './usages.js';
 import { callers } from './callers.js';
 import { stats } from './stats.js';
 import { dbPath } from './db-path.js';
+import { init } from './init.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -59,6 +60,7 @@ program
 program
   .command('init')
   .description('Print a CLAUDE.md snippet to enable zm-index in this project')
-  .action(() => { console.log('init: not yet implemented'); });
+  .option('--write', 'append the snippet to CLAUDE.md in the current directory')
+  .action((opts) => { init(process.cwd(), !!opts.write); });
 
 program.parse();
