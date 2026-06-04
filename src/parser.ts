@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 const Parser = require('tree-sitter');
 const { typescript, tsx } = require('tree-sitter-typescript');
 const Go = require('tree-sitter-go');
+const python = require('tree-sitter-python');
 
 const tsParser = new Parser();
 tsParser.setLanguage(typescript);
@@ -14,6 +15,9 @@ tsxParser.setLanguage(tsx);
 
 const goParser = new Parser();
 goParser.setLanguage(Go);
+
+const pyParser = new Parser();
+pyParser.setLanguage(python);
 
 const TSX_EXTENSIONS = new Set(['.tsx', '.jsx', '.vue', '.svelte']);
 
@@ -27,6 +31,8 @@ export function parse(filePath: string, source: string): ParseResult | null {
   let parser: typeof tsParser;
   if (ext === '.go') {
     parser = goParser;
+  } else if (ext === '.py') {
+    parser = pyParser;
   } else if (TSX_EXTENSIONS.has(ext)) {
     parser = tsxParser;
   } else {

@@ -1,3 +1,5 @@
+import { extractPythonSymbols } from './extractor-python.js';
+
 export interface Symbol {
   name: string;
   kind: 'class' | 'function' | 'method' | 'interface' | 'type' | 'enum' | 'const' | 'struct';
@@ -14,6 +16,7 @@ type SyntaxNode = {
 };
 
 export function extractSymbols(rootNode: SyntaxNode, filePath: string): Symbol[] {
+  if (filePath.endsWith('.py')) return extractPythonSymbols(rootNode, filePath);
   const symbols: Symbol[] = [];
   if (filePath.endsWith('.go')) {
     extractGoFromNodes(rootNode.namedChildren, filePath, symbols);
