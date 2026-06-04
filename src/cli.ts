@@ -8,6 +8,7 @@ import { outline } from './outline.js';
 import { usages } from './usages.js';
 import { callers } from './callers.js';
 import { stats } from './stats.js';
+import { dbPath } from './db-path.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -53,7 +54,7 @@ program
 program
   .command('db-path')
   .description('Print the path to the index database')
-  .action(() => { console.log('db-path: not yet implemented'); });
+  .action(() => { dbPath(process.cwd()); });
 
 program
   .command('init')
