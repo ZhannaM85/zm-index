@@ -59,7 +59,7 @@ _Broaden parser coverage beyond TypeScript/JavaScript._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| [#16](https://github.com/ZhannaM85/zm-index/issues/16) | feat: Python support via tree-sitter-python | Extract classes, functions, methods from `.py` files |
+| ~~[#16](https://github.com/ZhannaM85/zm-index/issues/16)~~ | ~~feat: Python support via tree-sitter-python~~ | ~~Extract classes, functions, methods from `.py` files~~ |
 | [#17](https://github.com/ZhannaM85/zm-index/issues/17) | feat: Go support via tree-sitter-go | Extract structs, interfaces, functions from `.go` files |
 | [#18](https://github.com/ZhannaM85/zm-index/issues/18) | feat: Rust support via tree-sitter-rust | Extract structs, enums, functions, traits from `.rs` files |
 | [#19](https://github.com/ZhannaM85/zm-index/issues/19) | feat: C# support via tree-sitter-c-sharp | Extract classes, methods, interfaces from `.cs` files |
