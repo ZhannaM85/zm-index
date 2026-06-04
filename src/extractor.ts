@@ -1,4 +1,5 @@
 import { extractPythonSymbols } from './extractor-python.js';
+import { extractRustSymbols } from './extractor-rust.js';
 
 export interface Symbol {
   name: string;
@@ -17,6 +18,7 @@ type SyntaxNode = {
 
 export function extractSymbols(rootNode: SyntaxNode, filePath: string): Symbol[] {
   if (filePath.endsWith('.py')) return extractPythonSymbols(rootNode, filePath);
+  if (filePath.endsWith('.rs')) return extractRustSymbols(rootNode, filePath);
   const symbols: Symbol[] = [];
   if (filePath.endsWith('.go')) {
     extractGoFromNodes(rootNode.namedChildren, filePath, symbols);

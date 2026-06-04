@@ -148,7 +148,7 @@ This writes `.cursor/rules/zm-index.mdc` with instructions telling Cursor's AI t
 | JavaScript | `.js`, `.jsx`, `.mjs`, `.cjs` |
 | Python _(planned)_ | `.py` |
 | Go _(planned)_ | `.go` |
-| Rust _(planned)_ | `.rs` |
+| Rust | `.rs` |
 | C# _(planned)_ | `.cs` |
 
 ---
