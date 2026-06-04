@@ -1,6 +1,6 @@
 export interface Symbol {
   name: string;
-  kind: 'class' | 'function' | 'method' | 'interface' | 'type' | 'enum' | 'const';
+  kind: 'class' | 'function' | 'method' | 'interface' | 'type' | 'enum' | 'const' | 'struct';
   file: string;
   line: number;
 }
@@ -15,7 +15,11 @@ type SyntaxNode = {
 
 export function extractSymbols(rootNode: SyntaxNode, filePath: string): Symbol[] {
   const symbols: Symbol[] = [];
-  extractFromNodes(rootNode.namedChildren, filePath, symbols);
+  if (filePath.endsWith('.go')) {
+    extractGoFromNodes(rootNode.namedChildren, filePath, symbols);
+  } else {
+    extractFromNodes(rootNode.namedChildren, filePath, symbols);
+  }
   return symbols;
 }
 
@@ -90,5 +94,40 @@ function extractMethods(classNode: SyntaxNode, filePath: string, symbols: Symbol
     if (child.type !== 'method_definition') continue;
     const name = child.childForFieldName('name')?.text;
     if (name) symbols.push({ name, kind: 'method', file: filePath, line: child.startPosition.row + 1 });
+  }
+}
+
+function extractGoFromNodes(nodes: SyntaxNode[], filePath: string, symbols: Symbol[]): void {
+  for (const node of nodes) {
+    extractGoFromNode(node, filePath, symbols);
+  }
+}
+
+function extractGoFromNode(node: SyntaxNode, filePath: string, symbols: Symbol[]): void {
+  switch (node.type) {
+    case 'function_declaration': {
+      const name = node.childForFieldName('name')?.text;
+      if (name) symbols.push({ name, kind: 'function', file: filePath, line: node.startPosition.row + 1 });
+      break;
+    }
+    case 'method_declaration': {
+      const name = node.childForFieldName('name')?.text;
+      if (name) symbols.push({ name, kind: 'method', file: filePath, line: node.startPosition.row + 1 });
+      break;
+    }
+    case 'type_declaration': {
+      for (const spec of node.namedChildren) {
+        if (spec.type !== 'type_spec') continue;
+        const name = spec.childForFieldName('name')?.text;
+        const typeNode = spec.childForFieldName('type');
+        if (!name || !typeNode) continue;
+        if (typeNode.type === 'struct_type') {
+          symbols.push({ name, kind: 'struct', file: filePath, line: spec.startPosition.row + 1 });
+        } else if (typeNode.type === 'interface_type') {
+          symbols.push({ name, kind: 'interface', file: filePath, line: spec.startPosition.row + 1 });
+        }
+      }
+      break;
+    }
   }
 }
