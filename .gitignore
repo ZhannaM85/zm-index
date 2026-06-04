@@ -6,3 +6,4 @@ dist/
 .zm-index/
 .mouse-fixes/
 *.zm-index.db
+.cursor/

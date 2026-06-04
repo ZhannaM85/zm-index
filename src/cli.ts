@@ -9,6 +9,7 @@ import { usages } from './usages.js';
 import { callers } from './callers.js';
 import { stats } from './stats.js';
 import { dbPath } from './db-path.js';
+import { printClaudeSnippet, writeCursorRules } from './init.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -58,7 +59,14 @@ program
 
 program
   .command('init')
-  .description('Print a CLAUDE.md snippet to enable zm-index in this project')
-  .action(() => { console.log('init: not yet implemented'); });
+  .description('Print a CLAUDE.md snippet, or with --cursor write .cursor/rules/zm-index.mdc')
+  .option('--cursor', 'write .cursor/rules/zm-index.mdc instead of printing to stdout')
+  .action((opts) => {
+    if (opts.cursor) {
+      writeCursorRules(process.cwd());
+    } else {
+      printClaudeSnippet();
+    }
+  });
 
 program.parse();
