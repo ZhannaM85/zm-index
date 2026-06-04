@@ -9,7 +9,7 @@ import { usages } from './usages.js';
 import { callers } from './callers.js';
 import { stats } from './stats.js';
 import { dbPath } from './db-path.js';
-import { printClaudeSnippet, writeCursorRules } from './init.js';
+import { init } from './init.js';
 
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json') as { version: string };
@@ -60,13 +60,8 @@ program
 program
   .command('init')
   .description('Print a CLAUDE.md snippet, or with --cursor write .cursor/rules/zm-index.mdc')
-  .option('--cursor', 'write .cursor/rules/zm-index.mdc instead of printing to stdout')
-  .action((opts) => {
-    if (opts.cursor) {
-      writeCursorRules(process.cwd());
-    } else {
-      printClaudeSnippet();
-    }
-  });
+  .option('--write', 'append the snippet directly to CLAUDE.md')
+  .option('--cursor', 'write .cursor/rules/zm-index.mdc for Cursor IDE')
+  .action((opts) => { init(process.cwd(), !!opts.write, !!opts.cursor); });
 
 program.parse();

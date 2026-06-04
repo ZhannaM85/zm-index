@@ -48,7 +48,7 @@ _Make zm-index easy to adopt in Claude Code projects._
 
 | # | Issue | Notes |
 |---|-------|-------|
-| [#14](https://github.com/ZhannaM85/zm-index/issues/14) | feat: `zm-index init` — generate a CLAUDE.md snippet for the project | Prints ready-to-paste rules telling Claude to use zm-index for code search |
+| ~~[#14](https://github.com/ZhannaM85/zm-index/issues/14)~~ | ~~feat: `zm-index init` — generate a CLAUDE.md snippet for the project~~ | ~~Prints ready-to-paste rules telling Claude to use zm-index for code search~~ |
 | ~~[#25](https://github.com/ZhannaM85/zm-index/issues/25)~~ | ~~feat: Cursor IDE integration — generate `.cursor/rules` snippet~~ | ~~`--cursor` flag writes `.cursor/rules/zm-index.mdc`; mirrors Claude Code integration~~ |
 | [#15](https://github.com/ZhannaM85/zm-index/issues/15) | docs: SessionStart hook for auto-rebuild in `.claude/settings.json` | Guide for setting up `zm-index stats || zm-index rebuild` on session start |
 
