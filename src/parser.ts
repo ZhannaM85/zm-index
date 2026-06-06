@@ -7,6 +7,7 @@ const { typescript, tsx } = require('tree-sitter-typescript');
 const Go = require('tree-sitter-go');
 const python = require('tree-sitter-python');
 const Rust = require('tree-sitter-rust');
+const CSharp = require('tree-sitter-c-sharp');
 
 const tsParser = new Parser();
 tsParser.setLanguage(typescript);
@@ -22,6 +23,9 @@ pyParser.setLanguage(python);
 
 const rustParser = new Parser();
 rustParser.setLanguage(Rust);
+
+const csParser = new Parser();
+csParser.setLanguage(CSharp);
 
 const TSX_EXTENSIONS = new Set(['.tsx', '.jsx', '.vue', '.svelte']);
 
@@ -39,6 +43,8 @@ export function parse(filePath: string, source: string): ParseResult | null {
     parser = pyParser;
   } else if (ext === '.rs') {
     parser = rustParser;
+  } else if (ext === '.cs') {
+    parser = csParser;
   } else if (TSX_EXTENSIONS.has(ext)) {
     parser = tsxParser;
   } else {

@@ -1,9 +1,10 @@
 import { extractPythonSymbols } from './extractor-python.js';
 import { extractRustSymbols } from './extractor-rust.js';
+import { extractCSharpSymbols } from './extractor-csharp.js';
 
 export interface Symbol {
   name: string;
-  kind: 'class' | 'function' | 'method' | 'interface' | 'type' | 'enum' | 'const' | 'struct';
+  kind: 'class' | 'function' | 'method' | 'interface' | 'type' | 'enum' | 'const' | 'struct' | 'record';
   file: string;
   line: number;
 }
@@ -19,6 +20,7 @@ type SyntaxNode = {
 export function extractSymbols(rootNode: SyntaxNode, filePath: string): Symbol[] {
   if (filePath.endsWith('.py')) return extractPythonSymbols(rootNode, filePath);
   if (filePath.endsWith('.rs')) return extractRustSymbols(rootNode, filePath);
+  if (filePath.endsWith('.cs')) return extractCSharpSymbols(rootNode, filePath);
   const symbols: Symbol[] = [];
   if (filePath.endsWith('.go')) {
     extractGoFromNodes(rootNode.namedChildren, filePath, symbols);
