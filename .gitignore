@@ -7,3 +7,4 @@ dist/
 .mouse-fixes/
 *.zm-index.db
 .cursor/
+logs/
