@@ -4,7 +4,7 @@
   "description": "Fast local code symbol index for AI coding assistants. CLI tool for TypeScript/JavaScript projects.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "node --test",
+    "test": "node --import tsx/esm --test tests/unit/extractor.test.ts tests/unit/db.test.ts tests/integration/cli.test.ts",
     "build": "tsc",
     "dev": "tsx src/cli.ts"
   },
