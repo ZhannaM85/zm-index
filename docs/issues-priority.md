@@ -72,7 +72,7 @@ _Verify correctness and measure performance before publishing._
 | # | Issue | Notes |
 |---|-------|-------|
 | ~~[#26](https://github.com/ZhannaM85/zm-index/issues/26)~~ | ~~feat: unit and integration test suite~~ | ~~Fixture-based tests for symbol extraction and all CLI commands; uses `node --test`~~ |
-| [#27](https://github.com/ZhannaM85/zm-index/issues/27) | feat: performance benchmarks for rebuild and search | hyperfine macro benchmarks + per-stage timing; compare search speed against grep |
+| ~~[#27](https://github.com/ZhannaM85/zm-index/issues/27)~~ | ~~feat: performance benchmarks for rebuild and search~~ | ~~hyperfine macro benchmarks + per-stage timing; compare search speed against grep~~ |
 
 ---
 
