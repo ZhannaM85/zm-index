@@ -36,6 +36,7 @@ _The commands users and AI agents will run daily. Depends on Tier 2._
 | ~~[#7](https://github.com/ZhannaM85/zm-index/issues/7)~~ | ~~feat: incremental index updates based on file mtime~~ | ~~Skip unchanged files; remove deleted files; speeds up repeated runs~~ |
 | ~~[#8](https://github.com/ZhannaM85/zm-index/issues/8)~~ | ~~feat: `zm-index search <symbol>` — find any symbol by name~~ | ~~FTS5 query, partial/prefix match, show kind + file + line~~ |
 | ~~[#9](https://github.com/ZhannaM85/zm-index/issues/9)~~ | ~~feat: `zm-index outline <file>` — list all symbols in a file~~ | ~~Returns all symbols defined in the given file, sorted by line number~~ |
+| ~~[#39](https://github.com/ZhannaM85/zm-index/issues/39)~~ | ~~feat: `zm-index outline --all` — outline all symbols across the project~~ | ~~Lists every symbol in every file, grouped by file with total count~~ |
 | ~~[#10](https://github.com/ZhannaM85/zm-index/issues/10)~~ | ~~feat: `zm-index usages <symbol>` — find all references to a symbol~~ | ~~Text search across indexed files for the symbol name~~ |
 | ~~[#11](https://github.com/ZhannaM85/zm-index/issues/11)~~ | ~~feat: `zm-index callers <function>` — find call sites of a function~~ | ~~Find places where a function is called, not just defined~~ |
 | ~~[#12](https://github.com/ZhannaM85/zm-index/issues/12)~~ | ~~feat: `zm-index stats` — show index statistics~~ | ~~File count, symbol count, DB size, last updated time~~ |
