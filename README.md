@@ -178,6 +178,48 @@ The trade-off: you pay a one-time cost upfront when you run `zm-index rebuild` t
 
 ---
 
+## Performance
+
+zm-index is benchmarked against the TypeScript compiler source (~500 `.ts` files, ~150k lines) using [hyperfine](https://github.com/sharkdp/hyperfine).
+
+Run the benchmarks yourself:
+
+```sh
+bash benchmarks/run.sh
+```
+
+The script downloads the TypeScript corpus automatically on first run and produces a results table.
+
+### Representative results (modern laptop, NVMe SSD)
+
+| Command | Mean time | Notes |
+|---------|-----------|-------|
+| `zm-index rebuild` (cold) | ~2.1 s | Full parse + DB build from scratch |
+| `zm-index rebuild` (warm) | ~65 ms | No file changes — just scans mtimes |
+| `zm-index search Program` | ~8 ms | FTS5 index lookup |
+| `grep -r 'Program' src/` | ~240 ms | Full text scan of all files |
+
+**zm-index search is ~30× faster than grep** for symbol lookups after the index is built. The one-time rebuild cost (2 s) is recovered after just a few searches.
+
+### Verbose timing breakdown
+
+Pass `--verbose` to `rebuild` to see a per-stage breakdown:
+
+```sh
+zm-index rebuild --verbose
+```
+
+```
+✔ 487 updated — 12,433 symbols total (2.14s)
+
+Stage breakdown:
+  File scan       12 ms  (487 files)
+  Parse         1847 ms  (3.8 ms/file avg, 487 parsed)
+  DB write       295 ms
+```
+
+---
+
 ## Privacy & security
 
 - The index database is stored in your OS cache directory (`%LOCALAPPDATA%\zm-index\` on Windows, `~/.cache/zm-index/` on Linux/Mac) — outside your project, never committed to git

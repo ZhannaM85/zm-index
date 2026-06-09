@@ -8,3 +8,5 @@ dist/
 *.zm-index.db
 .cursor/
 logs/
+benchmarks/corpus/
+benchmarks/results.md

@@ -10,7 +10,7 @@ interface StoredFile {
   size: number;
 }
 
-export function rebuild(projectRoot: string): void {
+export function rebuild(projectRoot: string, verbose = false): void {
   const start = performance.now();
 
   const db = openDb(projectRoot);
@@ -21,7 +21,10 @@ export function rebuild(projectRoot: string): void {
       .map(f => [f.path, f])
   );
 
+  const scanStart = performance.now();
   const scannedFiles = scanProject(projectRoot);
+  const scanMs = performance.now() - scanStart;
+
   const scannedPaths = new Set(scannedFiles.map(f => f.path));
 
   const insertFile = db.prepare(
@@ -42,7 +45,10 @@ export function rebuild(projectRoot: string): void {
   let deleted = 0;
   let errors = 0;
   let symbolCount = 0;
+  let totalParseMs = 0;
+  let parsedFileCount = 0;
 
+  const txStart = performance.now();
   const runAll = db.transaction(() => {
     // remove deleted files
     for (const [path, _] of storedFiles) {
@@ -69,7 +75,11 @@ export function rebuild(projectRoot: string): void {
         continue;
       }
 
+      const parseStart = performance.now();
       const parsed = parse(file.path, source);
+      totalParseMs += performance.now() - parseStart;
+      parsedFileCount++;
+
       if (!parsed) { errors++; continue; }
 
       const symbols = extractSymbols(parsed.tree.rootNode, file.path);
@@ -89,6 +99,7 @@ export function rebuild(projectRoot: string): void {
   });
 
   runAll();
+  const txMs = performance.now() - txStart;
   db.close();
 
   const elapsed = ((performance.now() - start) / 1000).toFixed(2);
@@ -100,4 +111,14 @@ export function rebuild(projectRoot: string): void {
   if (errors > 0)    parts.push(`${errors} errored`);
 
   console.log(`✔ ${parts.join(', ')} — ${symbolCount} symbol${symbolCount !== 1 ? 's' : ''} total (${elapsed}s)`);
+
+  if (verbose) {
+    const dbWriteMs = txMs - totalParseMs;
+    const avgParseMs = parsedFileCount > 0 ? (totalParseMs / parsedFileCount).toFixed(1) : '0.0';
+    console.log('');
+    console.log('Stage breakdown:');
+    console.log(`  File scan  ${scanMs.toFixed(0).padStart(6)} ms  (${scannedFiles.length} files)`);
+    console.log(`  Parse      ${totalParseMs.toFixed(0).padStart(6)} ms  (${avgParseMs} ms/file avg, ${parsedFileCount} parsed)`);
+    console.log(`  DB write   ${dbWriteMs.toFixed(0).padStart(6)} ms`);
+  }
 }

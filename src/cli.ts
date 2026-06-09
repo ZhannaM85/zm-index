@@ -22,9 +22,10 @@ program
 program
   .command('rebuild')
   .description('Scan the project and build the symbol index from scratch')
-  .action(() => {
+  .option('--verbose', 'Print per-stage timing breakdown (scan / parse / DB write)')
+  .action((opts) => {
     ensureGitignore(process.cwd());
-    rebuild(process.cwd());
+    rebuild(process.cwd(), !!opts.verbose);
   });
 
 program
