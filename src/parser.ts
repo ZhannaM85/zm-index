@@ -34,7 +34,15 @@ export interface ParseResult {
   parser: typeof tsParser;
 }
 
+// tree-sitter 0.21.x Node bindings cap input at 2^15 characters
+const TREE_SITTER_MAX_CHARS = 32768;
+
 export function parse(filePath: string, source: string): ParseResult | null {
+  if (source.length > TREE_SITTER_MAX_CHARS) {
+    console.error(`[zm-index] Skipped ${filePath}: file exceeds ${TREE_SITTER_MAX_CHARS} char limit (${source.length} chars)`);
+    return null;
+  }
+
   const ext = filePath.slice(filePath.lastIndexOf('.'));
   let parser: typeof tsParser;
   if (ext === '.go') {
@@ -54,7 +62,8 @@ export function parse(filePath: string, source: string): ParseResult | null {
     const tree = parser.parse(source);
     return { tree, parser };
   } catch (err) {
-    console.error(`[zm-index] Failed to parse ${filePath}:`, err);
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`[zm-index] Skipped ${filePath}: ${msg}`);
     return null;
   }
 }
