@@ -34,9 +34,10 @@ program
   .action((symbol) => { search(process.cwd(), symbol); });
 
 program
-  .command('outline <file>')
-  .description('List all symbols defined in a file')
-  .action((file) => { outline(process.cwd(), file); });
+  .command('outline [file]')
+  .description('List all symbols in a file, or all files with --all')
+  .option('--all', 'outline every indexed file in the project')
+  .action((file, opts) => { outline(process.cwd(), opts.all ? undefined : file); });
 
 program
   .command('usages <symbol>')
