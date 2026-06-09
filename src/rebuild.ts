@@ -110,7 +110,13 @@ export function rebuild(projectRoot: string, verbose = false): void {
   if (deleted > 0)   parts.push(`${deleted} deleted`);
   if (errors > 0)    parts.push(`${errors} errored`);
 
-  console.log(`✔ ${parts.join(', ')} — ${symbolCount} symbol${symbolCount !== 1 ? 's' : ''} total (${elapsed}s)`);
+  const totalFiles = scannedFiles.length - errors;
+  console.log('');
+  console.log(`  zm-index analyzed ${totalFiles} file${totalFiles !== 1 ? 's' : ''} and discovered ${symbolCount} symbol${symbolCount !== 1 ? 's' : ''} in ${elapsed}s`);
+  console.log(`  Your codebase is indexed and ready to search.`);
+  console.log('');
+  console.log(`  Files: ${parts.join(' · ')}`);
+  if (errors > 0) console.log(`  Skipped: ${errors} file${errors !== 1 ? 's' : ''} (too large or unreadable)`);
 
   if (verbose) {
     const dbWriteMs = txMs - totalParseMs;
