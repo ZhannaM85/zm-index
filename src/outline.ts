@@ -65,5 +65,8 @@ function outlineAll(projectRoot: string): void {
     console.log(String(row.line).padStart(4) + '  ' + row.kind.padEnd(kindWidth + 2) + row.name);
   }
 
-  console.log(`\n${rows.length} symbol${rows.length !== 1 ? 's' : ''} across ${currentFile ? new Set(rows.map(r => r.file)).size : 0} files`);
+  const fileCount = new Set(rows.map(r => r.file)).size;
+  console.log('');
+  console.log(`  zm-index analyzed ${fileCount} file${fileCount !== 1 ? 's' : ''} and discovered ${rows.length} symbol${rows.length !== 1 ? 's' : ''}`);
+  console.log(`  Your codebase is indexed and ready to search.`);
 }
