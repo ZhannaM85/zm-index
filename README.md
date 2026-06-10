@@ -45,16 +45,20 @@ zm-index search User    # find symbols matching "User"
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `zm-index rebuild` | Scan the project and build the symbol index from scratch |
-| `zm-index search <symbol>` | Find any symbol by name (supports partial match) |
-| `zm-index outline <file>` | List all symbols defined in a file, sorted by line |
-| `zm-index usages <symbol>` | Find all references to a symbol |
-| `zm-index callers <function>` | Find all call sites of a function |
-| `zm-index stats` | Show file count, symbol count, DB size, last updated |
-| `zm-index db-path` | Print the path to the local index database |
-| `zm-index init` | Print a CLAUDE.md snippet to enable zm-index in this project |
+| Command | Description | Example |
+|---------|-------------|---------|
+| `zm-index rebuild` | Scan the project and build the symbol index from scratch | `zm-index rebuild` |
+| `zm-index rebuild --verbose` | Full rebuild with per-stage timing breakdown | `zm-index rebuild --verbose` |
+| `zm-index search <symbol>` | Find any symbol by name (supports partial match) | `zm-index search UserService` |
+| `zm-index outline <file>` | List all symbols defined in a file, sorted by line | `zm-index outline src/db.ts` |
+| `zm-index outline --all` | List all symbols across every indexed file | `zm-index outline --all` |
+| `zm-index usages <symbol>` | Find all references to a symbol | `zm-index usages ApiResponse` |
+| `zm-index callers <function>` | Find all call sites of a function | `zm-index callers fetchData` |
+| `zm-index stats` | Show file count, symbol count, DB size, last updated | `zm-index stats` |
+| `zm-index db-path` | Print the path to the local index database | `zm-index db-path` |
+| `zm-index init` | Print a CLAUDE.md snippet to enable zm-index in this project | `zm-index init` |
+| `zm-index init --write` | Append the snippet directly to CLAUDE.md | `zm-index init --write` |
+| `zm-index init --cursor` | Write `.cursor/rules/zm-index.mdc` for Cursor IDE | `zm-index init --cursor` |
 
 ---
 
@@ -146,10 +150,11 @@ This writes `.cursor/rules/zm-index.mdc` with instructions telling Cursor's AI t
 |----------|------------|
 | TypeScript | `.ts`, `.tsx` |
 | JavaScript | `.js`, `.jsx`, `.mjs`, `.cjs` |
-| Python _(planned)_ | `.py` |
-| Go _(planned)_ | `.go` |
+| Vue / Svelte | `.vue`, `.svelte` |
+| Python | `.py` |
+| Go | `.go` |
 | Rust | `.rs` |
-| C# _(planned)_ | `.cs` |
+| C# | `.cs` |
 
 ---
 
