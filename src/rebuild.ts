@@ -112,7 +112,7 @@ export function rebuild(projectRoot: string, verbose = false): void {
 
   const totalFiles = scannedFiles.length - errors;
   console.log('');
-  console.log(`  zm-index analyzed ${totalFiles} file${totalFiles !== 1 ? 's' : ''} and discovered ${symbolCount} symbol${symbolCount !== 1 ? 's' : ''} in ${elapsed}s`);
+  console.log(`  ✔ zm-index analyzed ${totalFiles} file${totalFiles !== 1 ? 's' : ''} and discovered ${symbolCount} symbol${symbolCount !== 1 ? 's' : ''} in ${elapsed}s`);
   console.log(`  Your codebase is indexed and ready to search.`);
   console.log('');
   console.log(`  Files: ${parts.join(' · ')}`);
