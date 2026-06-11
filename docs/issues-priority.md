@@ -84,4 +84,4 @@ _Packaging and publishing. Do last — the tool should be stable and tested firs
 |---|-------|-------|
 | ~~[#20](https://github.com/ZhannaM85/zm-index/issues/20)~~ | ~~docs: write README with install, usage, and CLAUDE.md integration guide~~ | ~~Cover `npm install -g zm-index`, all commands, and AI agent setup~~ |
 | ~~[#21](https://github.com/ZhannaM85/zm-index/issues/21)~~ | ~~feat: GitHub Actions CI workflow~~ | ~~Run tests on push and PR~~ |
-| [#22](https://github.com/ZhannaM85/zm-index/issues/22) | feat: prepare and publish package to npm | Pre-publish checklist, versioning, first release |
+| ~~[#22](https://github.com/ZhannaM85/zm-index/issues/22)~~ | ~~feat: prepare and publish package to npm~~ | ~~Pre-publish checklist, versioning, first release~~ |
